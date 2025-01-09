@@ -1,10 +1,7 @@
-const buildApp = require('./src/app')
+const { buildApp, app } = require('./src/app')
 const { PORT } = require('./src/utils/constants.js')
 
-// const rootApp = null
-
-async function start() {
-// const start = async () => {
+const start = async () => {
     const app = await buildApp()
     try {
         await app.listen({ port: PORT })
@@ -15,6 +12,4 @@ async function start() {
     }
     return app
 }
-const rootApp = start()
-
-module.exports = rootApp
+start()
