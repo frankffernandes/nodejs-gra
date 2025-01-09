@@ -13,3 +13,4 @@ const start = async () => {
     return app
 }
 start()
+// module.exports = start

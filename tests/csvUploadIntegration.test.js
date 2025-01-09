@@ -1,17 +1,26 @@
-const app = require('../server.js')
 const path = require('path')
 const fs = require('fs')
 const FormData = require('form-data')
 
+// const app = require('../server.js')
+const { buildApp, app } = require('../src/app')
+const { PORT } = require('../src/utils/constants.js')
+
+let server
+beforeAll(async () => {
+    const testApp = await buildApp()
+    try {
+        await testApp.listen({ port: PORT })
+        console.log(`Server running on http://localhost:${PORT}`)
+    } catch (err) {
+        app.log.error(err)
+    }
+})
+afterAll(async () => {
+    app.close()
+})
+
 describe('CSV Upload Integration Tests', () => {
-    beforeAll(async () => {
-        await app.ready()
-    })
-
-    afterAll(async () => {
-        app.close()
-    })
-
     const uploadUrl = '/upload-movies'
     const validCsvPath = path.join(__dirname, 'valid_values.csv')
     const invalidCsvPath = path.join(__dirname, 'invalid_values.csv')
