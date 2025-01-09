@@ -28,7 +28,7 @@ npm run start
 ## API Routes
 
 | Method | Path | Return | Description |
-|---|---|
+|---|---|---|---|
 | `GET` | / | HTML | Get the initial form to upload movies from csv file |
 | `GET` | /movies | HTML | Get all movies from the model and return as a html table |
 | `POST` | /upload-movies | json | Create new movies from the csv uploaded |
