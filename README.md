@@ -1,10 +1,10 @@
-# NodeJs Golden Raspberry Awards
+# NodeJs Golden Raspberry Awards - Using Database
 
 Implementation of example backend application for the Golden Raspberry Awards powered by Fastify running on Node.js.
 
 ## Features
 
- - Database connection (Memory)
+ - TypeORM Database connection (Memory)
  - ORM
  - HTTP REST API
  
@@ -50,6 +50,7 @@ npm test
 
  - [Node.js](https://nodejs.org/en/)
  - [Fastify](https://fastify.dev/)
+ - [TypeORM](https://typeorm.io/)
 
 ## Licence
 
