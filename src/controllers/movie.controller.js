@@ -2,17 +2,13 @@ const fs = require('fs')
 const path = require('path')
 
 const movieValidation = require('../utils/movie.validation.js')
+const Movie = require('../models/movie.model')
 
 class MovieController {
     constructor(repo) {
         this.repository = repo
     }
-
-    async createMovie(data) {
-        const movie = this.repository.create(data)
-        return this.repository.save(movie)
-    }
-
+    
     async getAllItems() {
         return this.repository.find({
             order: {
@@ -100,7 +96,7 @@ class MovieController {
                 const result = await movieValidation.validateCsv(tempFilePath)
                 rows = result.rows
             } catch (error) {
-                console.error("Error processing csv", error)
+                // console.error("Error processing csv", error)
                 response.status(500).send({ message: 'Error while processing the csv file.' })
                 return
             }
@@ -208,8 +204,8 @@ class MovieController {
         }
 
         return {
-            min: (smallestGapProducer && smallestGap > 0) ? { producer: smallestGapProducer, interval: smallestGap, previousWin: smallestGapYears[0], followingWin: smallestGapYears[1] } : null,
-            max: (largestGapProducer && largestGap > 0) ? { producer: largestGapProducer, interval: largestGap, previousWin: largestGapYears[0], followingWin: largestGapYears[1] } : null,
+            min: (smallestGapProducer && smallestGap > 0) ? [{ producer: smallestGapProducer, interval: smallestGap, previousWin: smallestGapYears[0], followingWin: smallestGapYears[1] }] : [],
+            max: (largestGapProducer && largestGap > 0) ? [{ producer: largestGapProducer, interval: largestGap, previousWin: largestGapYears[0], followingWin: largestGapYears[1] }] : [],
         }
     }
     async producers(request, response) {
@@ -218,5 +214,4 @@ class MovieController {
     }
 }
 
-// module.exports = new MovieController()
 module.exports = MovieController

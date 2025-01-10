@@ -3,21 +3,23 @@ const fs = require('fs')
 const FormData = require('form-data')
 
 // const app = require('../server.js')
-const { buildApp, app } = require('../src/app')
+const { buildApp, fastify } = require('../src/app')
+// const { fastify } = require('../src/app')
 const { PORT } = require('../src/utils/constants.js')
 
-let server
+// let server
 beforeAll(async () => {
     const testApp = await buildApp()
     try {
         await testApp.listen({ port: PORT })
-        console.log(`Server running on http://localhost:${PORT}`)
+        // console.log(`Server running on http://localhost:${PORT}`)
     } catch (err) {
-        app.log.error(err)
+        fastify.log.error(err)
     }
+    // await fastify.ready()
 })
 afterAll(async () => {
-    app.close()
+    fastify.close()
 })
 
 describe('CSV Upload Integration Tests', () => {
@@ -34,7 +36,7 @@ describe('CSV Upload Integration Tests', () => {
     // TEST OK
     test('Should successfully process a valid CSV file', async () => {
         const form = createMultipartBody(validCsvPath)
-        const response = await app.inject({
+        const response = await fastify.inject({
             method: 'POST',
             url: uploadUrl,
             headers: form.getHeaders(),
@@ -54,7 +56,7 @@ describe('CSV Upload Integration Tests', () => {
     // TEST OK
     test('Should return an error for an invalid CSV file', async () => {
         const form = createMultipartBody(invalidCsvPath)
-        const response = await app.inject({
+        const response = await fastify.inject({
             method: 'POST',
             url: uploadUrl,
             headers: form.getHeaders(),
@@ -65,7 +67,7 @@ describe('CSV Upload Integration Tests', () => {
 
     // TEST OK
     test('Should return an error 406 if no file and no form-data header is provided', async () => {
-        const response = await app.inject({
+        const response = await fastify.inject({
             method: 'POST',
             url: uploadUrl,
         })
@@ -74,7 +76,7 @@ describe('CSV Upload Integration Tests', () => {
 
     // TEST OK
     test('Should return an error if no file is provided', async () => {
-        const response = await app.inject({
+        const response = await fastify.inject({
             method: 'POST',
             url: uploadUrl,
             headers: { "Content-Type": 'multipart/form-data;boundary="boundary"' },

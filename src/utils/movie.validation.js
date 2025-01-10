@@ -3,7 +3,7 @@ const csv = require('csv-parser')
 
 const csvHeaders = ['year', 'title', 'studios', 'producers', 'winner']
 
-const validateCsv = async (filePath) => {
+const validateCsv = async (filePath, delete_file = true) => {
     let headersValidate = true
     let headersRows = true
     let headersYears = true
@@ -41,7 +41,9 @@ const validateCsv = async (filePath) => {
                 rows.push(row)
             })
             .on('end', () => {
-                fs.unlinkSync(filePath)
+                if (delete_file) {
+                    fs.unlinkSync(filePath)
+                }
 
                 if (headersValidate && headersRows && headersYears) {
                     resolve({ rows: rows})
@@ -50,7 +52,9 @@ const validateCsv = async (filePath) => {
                 }
             })
             .on('error', () => {
-                fs.unlinkSync(filePath)
+                if (delete_file) {
+                    fs.unlinkSync(filePath)
+                }
                 reject({})
             })
     })
