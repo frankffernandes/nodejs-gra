@@ -2,12 +2,11 @@ const HomeController = require('../controllers/home.controller.js')
 const MovieController = require('../controllers/movie.controller.js')
 const Movie = require('../models/movie.model')
 
-const { AppDataSource } = require('../database/database.js')
+const AppDataSource = require('../database/database.js')
 
 async function routes(fastify, options) {
     const movieRepository = AppDataSource.getRepository(Movie)
     const movieController = new MovieController(movieRepository)
-
 
     // GET / - Get the initial form to upload movies from csv file
     fastify.get('/', HomeController.index)

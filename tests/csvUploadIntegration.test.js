@@ -2,12 +2,9 @@ const path = require('path')
 const fs = require('fs')
 const FormData = require('form-data')
 
-// const app = require('../server.js')
 const { buildApp, fastify } = require('../src/app')
-// const { fastify } = require('../src/app')
 const { PORT } = require('../src/utils/constants.js')
 
-// let server
 beforeAll(async () => {
     const testApp = await buildApp()
     try {
@@ -16,7 +13,6 @@ beforeAll(async () => {
     } catch (err) {
         fastify.log.error(err)
     }
-    // await fastify.ready()
 })
 afterAll(async () => {
     fastify.close()

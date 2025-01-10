@@ -2,7 +2,7 @@ const path = require('path')
 const fs = require('fs')
 
 const { INIT_DB_FILE } = require('../utils/constants.js')
-const { AppDataSource } = require('../database/database.js')
+const AppDataSource = require('../database/database.js')
 
 const Movie = require('../models/movie.model')
 const movieValidation = require('../utils/movie.validation.js')
