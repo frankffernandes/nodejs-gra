@@ -1,16 +1,17 @@
 # NodeJs Golden Raspberry Awards - Using Database
 
-A implementation of example backend application for the Golden Raspberry Awards powered by Fastify running on node.js.
+A implementation of example backend application for the Golden Raspberry Awards powered by Fastify running on Node.js.
 
 ## Features
 
- - TypeORM Database connection (Memory)
+ - Memory database connection through TypeORM
  - ORM
  - HTTP REST API
  
 ## Usage
 
-To run this application, you'll need [Node.js](https://nodejs.org/en/) (which comes with [npm](https://www.npmjs.com/)) installed on your computer.
+To run this application, you'll need [Node.js](https://nodejs.org/en/) (which comes with [npm](https://www.npmjs.com/)) installed on your computer.<br />
+The database is populated during the application's initialization.
 
 Then from your command line:
 
@@ -53,9 +54,10 @@ You can find these tests in the [routes.http](routes.http) file.
 
 ## Built With
 
- - [Node.js](https://nodejs.org/en/)
- - [Fastify](https://fastify.dev/)
- - [TypeORM](https://typeorm.io/)
+ - [npm v10.8.1](https://nodejs.org/en/)
+ - [Node.js v20.16.0](https://nodejs.org/en/)
+ - [Fastify v5.2.1](https://fastify.dev/)
+ - [TypeORM v0.3.20](https://typeorm.io/)
 
 ## Licence
 
