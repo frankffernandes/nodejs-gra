@@ -1,21 +1,12 @@
-POST http://localhost:3000/upload-movies
-Accept: application/json
-Content-Type: multipart/form-data; boundary=MfnBoundry
-
---MfnBoundry
-Content-Disposition: form-data; name="file"; filename="test.csv"
-Content-Type: text/plain
-
-< ./test.csv
-year;title;studios;producers;winner
-1980;Can't Stop the Music;Associated Film Distribution;Allan Carr;yes
-1980;Cruising;Lorimar Productions, United Artists;Jerry Weintraub;
---MfnBoundry--
-###
+// List all movies
 GET http://localhost:3000/movies
 ###
+
+// List a single movie by ID
 GET http://localhost:3000/movies/2
 ###
+
+// Update a single movie by ID
 PUT http://localhost:3000/movies/2
 Content-Type: application/json
 
@@ -27,6 +18,10 @@ Content-Type: application/json
     "winner": "no"
 }
 ###
+
+// Delete a single movie by ID
 DELETE http://localhost:3000/movies/2
 ###
+
+// List producers by custom algorithm
 GET http://localhost:3000/producers
