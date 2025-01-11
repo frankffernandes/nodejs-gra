@@ -1,6 +1,6 @@
 # NodeJs Golden Raspberry Awards - Using Database
 
-Implementation of example backend application for the Golden Raspberry Awards powered by Fastify running on Node.js.
+A implementation of example backend application for the Golden Raspberry Awards powered by Fastify running on node.js.
 
 ## Features
 
@@ -39,12 +39,17 @@ npm run start
 
 ## Integration tests
 
-This application is equipped with some integration tests.
+This application is equipped with some integration tests to validate the CSV file inputs.
 
 ```
 # Run integration tests
 npm test
 ```
+
+## HTTP REST API testing
+
+In [VsCode](https://code.visualstudio.com/) you can use [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) extension to test some REST API end-points.<br />
+You can find these tests in the [routes.http](routes.http) file.
 
 ## Built With
 
