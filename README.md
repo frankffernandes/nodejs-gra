@@ -1,6 +1,6 @@
 # NodeJs Golden Raspberry Awards - Using Database
 
-A implementation of example backend application for the Golden Raspberry Awards powered by Fastify running on Node.js.
+A implementation of example backend application for the Golden Raspberry Awards API powered by Fastify running on Node.js.
 
 ## Features
 
