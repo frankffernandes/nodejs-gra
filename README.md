@@ -54,10 +54,10 @@ You can find these tests in the [routes.http](routes.http) file.
 
 ## Built With
 
- - [npm v10.8.1](https://nodejs.org/en/)
- - [Node.js v20.16.0](https://nodejs.org/en/)
- - [Fastify v5.2.1](https://fastify.dev/)
- - [TypeORM v0.3.20](https://typeorm.io/)
+ - [npm](https://nodejs.org/en/) v10.8.1
+ - [Node.js](https://nodejs.org/en/) v20.16.0
+ - [Fastify](https://fastify.dev/) v5.2.1
+ - [TypeORM](https://typeorm.io/) v0.3.20
 
 ## Licence
 
