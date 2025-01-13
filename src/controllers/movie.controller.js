@@ -154,7 +154,7 @@ class MovieController {
 
     // producers
     async getProducersWinningGap() {
-        console.log("====================================== div")
+        // console.log("====================================== div")
         const items = await this.getAllWinningMovies()
         const producerYears = {}
     
