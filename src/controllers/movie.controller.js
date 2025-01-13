@@ -153,13 +153,14 @@ class MovieController {
     }
 
     // producers
-    async getProducersWinningGap() {
-        // console.log("====================================== div")
+    async getProducersWinningYears() {
         const items = await this.getAllWinningMovies()
         const producerYears = {}
     
         items.forEach(movie => {
-            const producers = movie.producers.split(", ")
+            let producers = movie.producers.split(',')
+            producers = producers.flatMap(part => part.split('and'))
+            producers = producers.map(name => name.trim())
             producers.forEach(producer => {
                 if (!producerYears[producer]) {
                     producerYears[producer] = []
@@ -167,7 +168,10 @@ class MovieController {
                 producerYears[producer].push(parseInt(movie.year, 10))
             })
         })
-
+        return producerYears
+    }
+    async getProducersWinningGap() {
+        const producerYears = await this.getProducersWinningYears()
         // console.log("producerYears:", producerYears)
     
         let smallestGapProducer = null
